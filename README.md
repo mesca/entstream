@@ -36,9 +36,9 @@ Help options:
 
 See `sub.c` and `sub.py` for example code on how to subscribe to the entropy feed and parse the resulting data.
 
-### Building
+## Building
 
-#### Alpine Linux
+### Alpine Linux
 
 Enable the community repository in `/etc/apk/repositories`.
 
@@ -50,7 +50,7 @@ apk add linux-headers libftdi1-dev czmq-dev popt-dev
 make && make install
 ```
 
-#### MacOS
+### MacOS
 
 Install [Homebrew](https://brew.sh/).
 
