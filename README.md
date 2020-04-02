@@ -50,6 +50,13 @@ apk add linux-headers libftdi1-dev czmq-dev popt-dev
 make && make install
 ```
 
+If Alpine Linux is used in diskless mode, you can persist the modifications with:
+
+```
+lbu add /usr/local/bin/entstream
+lbu commit -d
+```
+
 ### MacOS
 
 Install [Homebrew](https://brew.sh/).
