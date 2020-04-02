@@ -4,11 +4,11 @@ import zmq
 
 def deserialize(data):
     return {
-        'topic': data[0],
-        'serial': data[1],
+        'topic': data[0].decode(),
+        'serial': data[1].decode(),
         'timestamp': struct.unpack('d', data[2])[0],
         'data': data[3],
-        'setbits': data[4],
+        'setbits': int(data[4]),
         'zscore': struct.unpack('d', data[5])[0]
     }
 
