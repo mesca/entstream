@@ -12,6 +12,7 @@
 entstream_options options;
 volatile sig_atomic_t stop;
 struct timespec start;
+double offset;
 zactor_t *proxy;
 
 
@@ -41,9 +42,9 @@ void stream(entstream_context *context, struct timespec tick, uint8_t *data) {
 
         size_t size = sizeof(double);
 
-        // Timestamp to byte array
+        // Monotonic timestamp struct to system-wide timestamp byte array
         uint8_t timestamp[size];
-        double timestamp_double = timespec_to_double(tick);
+        double timestamp_double = timespec_to_double(tick) + offset;
         memcpy(&timestamp, &timestamp_double, size);
 
         // Hamming weight
@@ -153,7 +154,11 @@ int run() {
     if (options.enable_pubsub) init_broker();
 
     // Set a common starting point so all threads are in sync
+    // Compute the offset between the system-wide clock and the monotonic clock
+    struct timespec now;
     clock_gettime(CLOCK_MONOTONIC, &start);
+    clock_gettime(CLOCK_REALTIME, &now);
+    offset = timespec_to_double(timespec_sub(now, start));
 
     if (options.serial != NULL) {
         // Launch first device in main thread
