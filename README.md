@@ -1,6 +1,6 @@
 # EntStream
 
-> “Any one who considers arithmetical methods of producing random digits is, of course, in a state of sin.” – John Von Neumann, 1951
+> “Anyone who considers arithmetical methods of producing random digits is, of course, in a state of sin.” – John Von Neumann, 1951
 
 If you have good reasons for streaming raw entropy (no health check, no whitening) from one or more [Infinite Noise](https://www.crowdsupply.com/13-37/infinite-noise-trng) TRNGs, here it is. Use at your own risk, and may God have mercy upon your soul.
 
