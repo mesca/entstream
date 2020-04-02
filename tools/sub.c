@@ -16,7 +16,7 @@ int main(void) {
         zsock_recv(sub, "ssbbib", &topic, &serial, &timestamp_bytes, &size_double, &data, &size_data, &setbits, &z_bytes, &size_double);
         memcpy(&timestamp, timestamp_bytes, sizeof(double));
         memcpy(&z, z_bytes, sizeof(double));
-        printf("%s - %s - %lf - %.64s - %d - %lf\n", topic, serial, timestamp, data, setbits, z);
+        printf("%s - %s - %lf - %s - %d - %lf\n", topic, serial, timestamp, data, setbits, z);
         free(topic);
         free(serial);
         free(timestamp_bytes);
