@@ -7,6 +7,7 @@
 #define FRONTEND_ENDPOINT "inproc://frontend"
 #define BACKEND_ENDPOINT "ipc:///tmp/backend"
 #define PUBLISHER_ENDPOINT ">inproc://frontend"
+#define HWM 5000
 #define SERIAL NULL;
 
 typedef struct entstream_options {

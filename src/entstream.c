@@ -22,10 +22,10 @@ void inthand() {
 
 void init_broker() {
     zsys_handler_set(NULL); // Remove CZMQ signal handler
+    zsys_set_sndhwm(HWM); // High-water mark
     proxy = zactor_new(zproxy, NULL);
     zstr_sendx(proxy, "FRONTEND", "XSUB", FRONTEND_ENDPOINT, NULL);
     zstr_sendx(proxy, "BACKEND", "XPUB", options.endpoint, NULL);
-    // TODO: set high water mark
 }
 
 void terminate_broker() {
