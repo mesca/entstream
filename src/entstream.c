@@ -185,6 +185,7 @@ int main(int argc, char *argv[]) {
 
     // Parse arguments
     struct poptOption po[] = {
+        {"version", 'v', POPT_ARG_NONE, NULL, 1, "Print version and exit", 0},
         {"enable-stdout", 'o', POPT_ARG_NONE, &options.enable_stdout, 0, "Print entropy to stdout", 0},
         {"enable-pubsub", 'p', POPT_ARG_NONE, &options.enable_pubsub, 0, "Send entropy to a Pub/Sub broker", 0},
         {"endpoint", 'e', POPT_ARG_STRING, &options.endpoint, 0, "Endpoint address", "ADDRESS"},
@@ -195,6 +196,10 @@ int main(int argc, char *argv[]) {
     };
     poptContext pc = poptGetContext(NULL, argc, (const char **)argv, po, 0);
     int r = poptGetNextOpt(pc);
+    if (r == 1) {
+        printf("%s\n", VERSION);
+        return(1);
+    }
     if (r != -1) {
         poptPrintUsage(pc, stderr, 0);
         return(1);

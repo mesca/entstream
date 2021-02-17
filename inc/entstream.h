@@ -1,5 +1,7 @@
 #include <libentstream.h>
 
+#define VERSION "EntStream 0.1.1"
+
 // Default values
 #define RATE 200.0
 #define ENABLE_STDOUT 0
