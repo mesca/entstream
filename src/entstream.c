@@ -101,7 +101,7 @@ bool loop(char *serial) {
                 for (i = 0; i <= missed; i++) {
                     tick = timespec_add(tick, interval);
                 }
-                fprintf(stderr, "%s\tCongestion: missed %d packet(s). Ellapsed: %lf. Current rate: %lf. Expected rate: %lf.\n", context.device.serial, missed, ellapsed, rate, options.rate);
+                fprintf(stderr, "[%f]\t%s\tCongestion: missed %d packet(s). Ellapsed: %lf. Current rate: %lf. Expected rate: %lf.\n", timespec_to_double(end) + offset, context.device.serial, missed, ellapsed, rate, options.rate);
             } else {
                 // We're on time, schedule next tick
                 tick = timespec_add(tick, interval);
